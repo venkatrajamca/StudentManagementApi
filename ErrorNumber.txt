@@ -1,0 +1,2 @@
+﻿Start Number = 00001
+Currently Used Number= 00001
