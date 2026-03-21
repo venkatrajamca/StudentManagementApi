@@ -22,9 +22,16 @@ namespace StudentManagementApi.Controllers
         }   
 
         // GET: api/<StudentController>
+        //[httpget]
+        //public iactionresult getalluser() => ok(_repo.getusers());
+
+
         [HttpGet]
-        public IActionResult GetAllUser() => Ok(_repo.GetUsers());
-        
+        public async Task<IActionResult> GetAllUsersAsync()
+        {
+            var users = await Task.Run(() => _repo.GetUsers());
+            return Ok(users);
+        }   
 
         // GET api/<StudentController>/5
         [HttpGet("{id}")]
@@ -40,7 +47,7 @@ namespace StudentManagementApi.Controllers
         {
             _repo.InserUser(user);
             return Ok("User Added");
-        }
+        } 
 
         // PUT api/<StudentController>/5
         [HttpPut("{id}")]
