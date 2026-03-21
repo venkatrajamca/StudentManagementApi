@@ -1,4 +1,40 @@
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using StudentManagementApi;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+
+//// Configure JWT authentication
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuer = true,
+//            ValidateAudience = true,
+//            ValidateLifetime = true,
+//            ValidateIssuerSigningKey = true,
+//            ValidIssuer = "yourIssuer",
+//            ValidAudience = "yourAudience",
+//            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key_here_123!"))
+//        };
+//    });
+
+//var app = builder.Build();
+
+//app.UseAuthentication(); // Add this before UseAuthorization
+//app.UseAuthorization();
+
+//app.MapControllers();
+
+//app.Run();
+
+
+builder.Services.AddSingleton<StudentRepository>();
 
 // Add services to the container.
 
